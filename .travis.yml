@@ -21,5 +21,8 @@ sudo: false
 install:
   - if [[ $TEST_TYPE == 'check' ]]; then pip install -r requirements-dev.txt; fi
   - python scripts/ci/install
+  - pip install codecov
 script:
   - make $TEST_TYPE
+after_success:
+  - codecov
